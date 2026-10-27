@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery - {{ school.school_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">School Gallery</h1>
+    
+    <!-- Category Filter -->
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+        {% for cat in categories %}
+            <a href="/gallery?category={{ cat }}" class="btn {% if selected_category == cat %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                {{ cat }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- Image Grid -->
+    <div class="row">
+        {% for img in images %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <img src="{{ img.image_url }}" class="card-img-top" alt="{{ img.title }}" style="height: 200px; object-fit: cover; background-color: #ddd;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ img.title }}</h5>
+                        <p class="card-text">{{ img.description }}</p>
+                        <span class="badge bg-secondary">{{ img.category }}</span>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center mt-4">
+                <p class="lead text-muted">No images found for this category yet.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

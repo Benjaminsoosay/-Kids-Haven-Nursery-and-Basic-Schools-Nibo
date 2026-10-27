@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Home - {{ school.school_name }}{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold">{{ school.school_name }}</h1>
+            <p class="lead fst-italic text-warning">"{{ school.motto }}"</p>
+            <a href="/admissions" class="btn btn-warning btn-lg mt-3 fw-bold text-dark">Apply for Admission</a>
+        </div>
+    </div>
+
+    <!-- Vision & Mission -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary">Our Vision</h3>
+                        <p class="card-text">{{ school.vision }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="card-title text-success">Our Mission</h3>
+                        <p class="card-text">{{ school.mission }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Section -->
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4">Meet Our Staff</h2>
+        <div class="row justify-content-center">
+            {% for staff in staff_members %}
+                <div class="col-md-4 mb-4">
+                    <div class="card staff-card h-100">
+                        <img src="{{ staff.photo_url }}" class="card-img-top staff-img" alt="{{ staff.full_name }}" onerror="this.src='https://via.placeholder.com/300x250?text=Photo+Not+Found'">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ staff.full_name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ staff.role }}</h6>
+                            <p class="card-text"><small><strong>Qualification:</strong> {{ staff.qualification }}</small></p>
+                            <p class="card-text"><em>{{ staff.bio }}</em></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

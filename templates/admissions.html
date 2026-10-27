@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Admissions - {{ school.school_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Admissions</h1>
+    
+    {% if request.query_params.get('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            Your enquiry has been received! We will contact you soon.
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <!-- Categories & Requirements -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h3 class="text-primary">Available Categories</h3>
+                    <ul class="list-group list-group-flush mb-4">
+                        {% for cat in categories %}
+                            <li class="list-group-item bg-transparent">{{ cat }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3 class="text-primary">Requirements</h3>
+                    <ul class="list-group list-group-flush">
+                        {% for req in requirements %}
+                            <li class="list-group-item bg-transparent">{{ req }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enquiry Form -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h3 class="text-success mb-4">Make an Enquiry</h3>
+                    <form action="/admissions/enquire" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Parent/Guardian Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" name="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Class of Interest</label>
+                            <select class="form-select" name="category">
+                                {% for cat in categories %}
+                                    <option value="{{ cat }}">{{ cat }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Submit Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

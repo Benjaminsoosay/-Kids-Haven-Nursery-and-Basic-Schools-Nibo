@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Parent Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="card shadow border-0 p-4">
+        <h2>Welcome, {{ user.full_name }}!</h2>
+        <p class="lead">You are logged in as a Parent.</p>
+        <hr>
+        <h4>Your Application Status</h4>
+        <div class="alert alert-info">You have no pending applications. <a href="/admissions">Apply for admission</a></div>
+        <a href="/auth/logout" class="btn btn-danger mt-3">Logout</a>
+    </div>
+</div>
+{% endblock %}

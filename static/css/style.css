@@ -1,0 +1,54 @@
+/* Custom Styles for Kids Haven */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Custom Navbar Color */
+.navbar-custom {
+    background-color: #2c3e50;
+}
+
+.navbar-custom .navbar-brand, 
+.navbar-custom .nav-link {
+    color: white !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #f39c12 !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('/static/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Staff Cards */
+.staff-card {
+    transition: transform 0.3s;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+}
+
+.staff-img {
+    height: 250px;
+    object-fit: cover;
+    background-color: #ddd;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+}

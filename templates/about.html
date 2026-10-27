@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - {{ school.school_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h1 class="text-center mb-4">About {{ school.school_name }}</h1>
+            
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3 class="text-primary">Our Vision</h3>
+                    <p class="lead">{{ school.vision }}</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3 class="text-success">Our Mission</h3>
+                    <p class="lead">{{ school.mission }}</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3>Our Curriculum</h3>
+                    <p>{{ school.curriculum }}</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3>Learning Environment</h3>
+                    <p>{{ school.learning_environment }}</p>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3>Our Staff</h3>
+                    <p>{{ school.staff_description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - {{ school.school_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    
+    {% if request.query_params.get('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            Your message has been sent successfully!
+        </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <form action="/contact" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Your Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" name="phone" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" name="subject" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="text-center mt-4">
+                <p><strong>Email:</strong> {{ school.email }} | <strong>Phone:</strong> {{ school.phone1 }}, {{ school.phone2 }}</p>
+                <p><strong>Address:</strong> {{ school.address }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

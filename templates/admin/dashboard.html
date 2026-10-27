@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-primary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Gallery Images</h5>
+                    <h2 class="display-4">{{ image_count }}</h2>
+                    <a href="/admin/gallery" class="text-white">Manage Gallery &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-success shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Staff Members</h5>
+                    <h2 class="display-4">{{ staff_count }}</h2>
+                    <p class="mb-0">Manage in MongoDB for now</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-warning shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Messages</h5>
+                    <h2 class="display-4">{{ message_count }}</h2>
+                    <p class="mb-0">Check MongoDB to read</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

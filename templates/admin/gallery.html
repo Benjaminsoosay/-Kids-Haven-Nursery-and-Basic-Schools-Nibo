@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Manage Gallery{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Manage Gallery</h1>
+        <a href="/admin" class="btn btn-outline-secondary">Back to Dashboard</a>
+    </div>
+
+    <div class="row">
+        <!-- Add Image Form -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-success">Add New Image</h4>
+                    <form action="/admin/gallery/add" method="post">
+                        <div class="mb-2">
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Description</label>
+                            <input type="text" name="description" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Image URL (e.g. /static/images/gallery/pic.jpg)</label>
+                            <input type="text" name="image_url" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Category</label>
+                            <select name="category" class="form-select">
+                                <option value="Classrooms">Classrooms</option>
+                                <option value="Playground">Playground</option>
+                                <option value="Events">Events</option>
+                                <option value="Learning Activities">Learning Activities</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Add Image</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing Images List -->
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="card-title">Current Images</h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for img in images %}
+                            <tr>
+                                <td><img src="{{ img.image_url }}" width="60" height="40" style="object-fit:cover;" onerror="this.src='https://via.placeholder.com/60'"></td>
+                                <td>{{ img.title }}</td>
+                                <td>{{ img.category }}</td>
+                                <td>
+                                    <form action="/admin/gallery/delete/{{ img.id }}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
